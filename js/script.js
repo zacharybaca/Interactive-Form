@@ -20,7 +20,6 @@ jobRole.addEventListener('change', (e) => {
 let colorElement = document.getElementById('color');
 let designElement = document.getElementById('design');
 let colorOptions = colorElement.options;
-console.log(colorOptions);
 // Disables Color Select Element From Being Selectable
 colorElement.disabled = true;
 // Event Enables colorElement If Selection Is Made On Design Element
@@ -46,4 +45,19 @@ designElement.addEventListener('change', (e) => {
         }
         
     }
+})
+
+// Register For Activities Fieldset Listens For Changes
+let activities = document.getElementById('activities');
+let activityCost = document.getElementById('activities-cost');
+let totalCost = 0;
+// Listens For Changes On Form And Updates Total Value Based On dataset Value
+activities.addEventListener('change', (e) => {
+    if (e.target.checked) {
+        totalCost += parseInt(e.target.dataset.cost);
+    }
+    else {
+        totalCost -= parseInt(e.target.dataset.cost);
+    }
+    activityCost.innerHTML = `Total: $${totalCost}`
 })
