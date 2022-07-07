@@ -26,14 +26,24 @@ colorElement.disabled = true;
 // Event Enables colorElement If Selection Is Made On Design Element
 designElement.addEventListener('change', (e) => {
     colorElement.disabled = false;
+    // Loop Over HTML Collection of Options and Compare Dataset Theme to Show/Hide Options
     for (let i = 1; i < colorOptions.length; i++) {
         if (e.target.value === 'js puns') {
             if (colorOptions[i].dataset.theme !== 'js puns') {
                 colorOptions[i].setAttribute("hidden", "hidden");
+            } 
+            else {
+                colorOptions[i].removeAttribute("hidden");
             }
         }
-        else {
-            colorOptions[i].removeAttribute("hidden");
+        else if (e.target.value === 'heart js') {
+            if (colorOptions[i].dataset.theme !== 'heart js') {
+                colorOptions[i].setAttribute("hidden", "hidden");
+            }
+            else {
+                colorOptions[i].removeAttribute("hidden");
+            }
         }
+        
     }
 })
