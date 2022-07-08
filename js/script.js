@@ -96,13 +96,16 @@ paymentMethod.addEventListener('change', (e) => {
 let form = document.querySelector('form');
 let nameField = document.getElementById('name').value;
 let emailField = document.getElementById('email').value;
+let creditCardNumber = document.getElementById('cc-num').value;
 let emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+let creditCardValidation = /^[0-9]{13,16}$/;
 let activitiesChecked = activities.elements;
 let count = 0;
 
 
 form.addEventListener('submit', (e) => {
     let emailResult = emailValidation.test(emailField);
+    let creditCardResult = creditCardValidation.test(creditCardNumber);
     if (nameField === '' || nameField === null) {
         alert('Please Enter Your Name!');
     } 
@@ -117,5 +120,10 @@ form.addEventListener('submit', (e) => {
     if (count === 0) {
         alert('Please Select At Least One Item From The Activities List');
     }
+    if (!creditCardResult) {
+        alert('Credit Card Number Must Be Between 13 and 16 Digits!');
+    }
    
 })
+console.log(creditCardNumber);
+console.log(paymentMethod.value);
