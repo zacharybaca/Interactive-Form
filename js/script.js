@@ -139,5 +139,3 @@ form.addEventListener('submit', (e) => {
     }
     
 })
-console.log(cvv);
-console.log(paymentMethod.value);
