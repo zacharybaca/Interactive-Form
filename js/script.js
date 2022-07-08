@@ -98,9 +98,11 @@ let nameField = document.getElementById('name').value;
 let emailField = document.getElementById('email').value;
 let creditCardNumber = document.getElementById('cc-num').value;
 let zipCode = document.getElementById('zip').value;
+let cvv = document.getElementById('cvv').value;
 let emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 let creditCardValidation = /^[0-9]{13,16}$/;
 let zipCodeValidation = /^[0-9]{5}$/;
+let cvvValidation = /^[0-9]{3}$/;
 let activitiesChecked = activities.elements;
 let count = 0;
 
@@ -109,6 +111,7 @@ form.addEventListener('submit', (e) => {
     let emailResult = emailValidation.test(emailField);
     let creditCardResult = creditCardValidation.test(creditCardNumber);
     let zipCodeResult = zipCodeValidation.test(zipCode);
+    let cvvResult = cvvValidation.test(cvv);
     if (nameField === '' || nameField === null) {
         alert('Please Enter Your Name!');
     } 
@@ -123,11 +126,18 @@ form.addEventListener('submit', (e) => {
     if (count === 0) {
         alert('Please Select At Least One Item From The Activities List');
     }
-    if (!creditCardResult) {
-        alert('Credit Card Number Must Be Between 13 and 16 Digits!');
+    if (paymentMethod.value === 'credit-card') {
+        if (!creditCardResult) {
+            alert('Credit Card Number Must Be Between 13 and 16 Digits!');
+        }
+       if (!zipCodeResult) {
+        alert('Please Enter A Five Digit Zip Code!');
+       }
+       if (!cvvResult) {
+        alert('Please Enter A Three Digit CVV Code!');
+       }
     }
-   if (!zipCodeResult) {
-    alert('Please Enter A Five Digit Zip Code!');
-   }
+    
 })
-console.log(zipCode);
+console.log(cvv);
+console.log(paymentMethod.value);
