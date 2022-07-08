@@ -51,6 +51,7 @@ designElement.addEventListener('change', (e) => {
 let activities = document.getElementById('activities');
 let activityCost = document.getElementById('activities-cost');
 let totalCost = 0;
+
 // Listens For Changes On Form And Updates Total Value Based On dataset Value
 // Need to fix bug where form needs to be cleared at refresh
 activities.addEventListener('change', (e) => {
@@ -89,4 +90,33 @@ paymentMethod.addEventListener('change', (e) => {
         creditCard.setAttribute("hidden", "hidden");
         payPal.setAttribute("hidden", "hidden");
     }
+})
+
+// Event Listener Should Check To See If Form Is Filled Out Correctly
+let form = document.querySelector('form');
+let nameField = document.getElementById('name').value;
+let emailField = document.getElementById('email').value;
+let emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+let activitiesChecked = activities.elements;
+let count = 0;
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let emailResult = emailValidation.test(emailField);
+    if (nameField === '' || nameField === null) {
+        alert('Please Enter Your Name!');
+    } 
+    if (!emailResult) {
+        alert('Please Enter An Email In A Valid Format!');
+    } 
+    for (let i = 0; i < activitiesChecked.length; i++) {
+        if (activitiesChecked[i].checked) {
+            count += 1;
+        }
+    }
+    if (count === 0) {
+        alert('Please Select At Least One Item');
+    }
+   
 })
