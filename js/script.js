@@ -65,5 +65,28 @@ activities.addEventListener('change', (e) => {
 
 // Make Credit Card Default Payment Option
 let paymentMethod = document.getElementById('payment');
+let creditCard = document.getElementById('credit-card');
+let payPal = document.getElementById('paypal');
+let bitCoin = document.getElementById('bitcoin');
 paymentMethod.options[1].selected = true;
+payPal.setAttribute("hidden", "hidden");
+bitCoin.setAttribute("hidden", "hidden");
 
+// Event Listener Listens For Changes To Show Only Selected Payment Method Sections
+paymentMethod.addEventListener('change', (e) => {
+    if (e.target.value === 'credit-card') {
+        creditCard.removeAttribute("hidden");
+        payPal.setAttribute("hidden", "hidden");
+        bitCoin.setAttribute("hidden", "hidden");
+    }
+    else if (e.target.value === 'paypal') {
+        payPal.removeAttribute("hidden");
+        creditCard.setAttribute("hidden", "hidden");
+        bitCoin.setAttribute("hidden", "hidden");
+    }
+    else if (e.target.value === 'bitcoin') {
+        bitCoin.removeAttribute("hidden");
+        creditCard.setAttribute("hidden", "hidden");
+        payPal.setAttribute("hidden", "hidden");
+    }
+})
