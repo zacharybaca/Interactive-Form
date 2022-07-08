@@ -112,6 +112,7 @@ form.addEventListener('submit', (e) => {
     let creditCardResult = creditCardValidation.test(creditCardNumber);
     let zipCodeResult = zipCodeValidation.test(zipCode);
     let cvvResult = cvvValidation.test(cvv);
+    // Prevents Default Form Action If nameField is Blank or emailResult is False
     if (nameField === '' || !emailResult) {
         e.preventDefault();
     }
@@ -130,6 +131,7 @@ form.addEventListener('submit', (e) => {
         alert('Please Select At Least One Item From The Activities List');
     }
     if (paymentMethod.value === 'credit-card') {
+        // Prevents Default Form Action if creditCardResult, zipCodeResult, or cvvResult is False
         if (!creditCardResult || !zipCodeResult || !cvvResult) {
             e.preventDefault();
         }
