@@ -112,6 +112,9 @@ form.addEventListener('submit', (e) => {
     let creditCardResult = creditCardValidation.test(creditCardNumber);
     let zipCodeResult = zipCodeValidation.test(zipCode);
     let cvvResult = cvvValidation.test(cvv);
+    if (nameField === '' || !emailResult) {
+        e.preventDefault();
+    }
     if (nameField === '' || nameField === null) {
         alert('Please Enter Your Name!');
     } 
@@ -127,6 +130,9 @@ form.addEventListener('submit', (e) => {
         alert('Please Select At Least One Item From The Activities List');
     }
     if (paymentMethod.value === 'credit-card') {
+        if (!creditCardResult || !zipCodeResult || !cvvResult) {
+            e.preventDefault();
+        }
         if (!creditCardResult) {
             alert('Credit Card Number Must Be Between 13 and 16 Digits!');
         }
