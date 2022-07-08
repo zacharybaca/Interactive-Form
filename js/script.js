@@ -52,6 +52,7 @@ let activities = document.getElementById('activities');
 let activityCost = document.getElementById('activities-cost');
 let totalCost = 0;
 // Listens For Changes On Form And Updates Total Value Based On dataset Value
+// Need to fix bug where form needs to be cleared at refresh
 activities.addEventListener('change', (e) => {
     if (e.target.checked) {
         totalCost += parseInt(e.target.dataset.cost);
@@ -61,3 +62,8 @@ activities.addEventListener('change', (e) => {
     }
     activityCost.innerHTML = `Total: $${totalCost}`
 })
+
+// Make Credit Card Default Payment Option
+let paymentMethod = document.getElementById('payment');
+paymentMethod.options[1].selected = true;
+
