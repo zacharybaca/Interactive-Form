@@ -102,7 +102,6 @@ let count = 0;
 
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
     let emailResult = emailValidation.test(emailField);
     if (nameField === '' || nameField === null) {
         alert('Please Enter Your Name!');
@@ -116,7 +115,7 @@ form.addEventListener('submit', (e) => {
         }
     }
     if (count === 0) {
-        alert('Please Select At Least One Item');
+        alert('Please Select At Least One Item From The Activities List');
     }
    
 })
