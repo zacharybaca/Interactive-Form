@@ -99,6 +99,9 @@ let nameLabel = document.getElementById('name').parentElement;
 let emailField = document.getElementById('email').value;
 let emailLabel = document.getElementById('email').parentElement;
 let creditCardNumber = document.getElementById('cc-num').value;
+let creditCardLabel = document.getElementById('cc-num').parentElement;
+let zipCodeLabel = document.getElementById('zip').parentElement;
+let cvvLabel = document.getElementById('cvv').parentElement;
 let zipCode = document.getElementById('zip').value;
 let cvv = document.getElementById('cvv').value;
 let emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -116,16 +119,22 @@ form.addEventListener('submit', (e) => {
     let cvvResult = cvvValidation.test(cvv);
     let nameHint = document.getElementById('name-hint');
     let emailHint = document.getElementById('email-hint');
+    let creditCardHint = document.getElementById('cc-hint');
+    let zipCodeHint = document.getElementById('zip-hint');
+    let cvvHint = document.getElementById('cvv-hint');
     let activitiesHint = document.getElementById('activities-hint');
     // Prevents Default Form Action If nameField is Blank or emailResult is False
-    if (nameField === '' || !emailResult) {
+    if(nameField === '') {
         e.preventDefault();
         nameLabel.classList.add('not-valid');
-        emailLabel.classList.add('not-valid');
         nameLabel.classList.remove('valid');
-        emailLabel.classList.remove('valid');
         nameLabel.lastElementChild.hidden = false;
         nameHint.style.display = 'block';
+    }
+    else if (!emailResult) {
+        e.preventDefault();
+        emailLabel.classList.add('not-valid');
+        emailLabel.classList.remove('valid');
         emailLabel.lastElementChild.hidden = false;
         emailHint.style.display = 'block';
     }
@@ -144,8 +153,26 @@ form.addEventListener('submit', (e) => {
     }
     if (paymentMethod.value === 'credit-card') {
         // Prevents Default Form Action if creditCardResult, zipCodeResult, or cvvResult is False
-        if (!creditCardResult || !zipCodeResult || !cvvResult) {
+        if (!creditCardResult) {
             e.preventDefault();
+            creditCardLabel.classList.add('not-valid');
+            creditCardLabel.classList.remove('valid');
+            creditCardLabel.lastElementChild.hidden = false;
+            creditCardHint.style.display = 'block';
+        }
+        if (!zipCodeResult) {
+            e.preventDefault();
+            zipCodeLabel.classList.add('not-valid');
+            zipCodeLabel.classList.remove('valid');
+            zipCodeLabel.lastElementChild.hidden = false;
+            zipCodeHint.style.display = 'block';
+        }
+        if (!cvvResult) {
+            e.preventDefault();
+            cvvLabel.classList.add('not-valid');
+            cvvLabel.classList.remove('valid');
+            cvvLabel.lastElementChild.hidden = false;
+            cvvHint.style.display = 'block';
         }
     }
     
@@ -163,4 +190,6 @@ for (let i = 0; i < activitiesBox.length; i++) {
         e.target.parentElement.classList.remove('focus');
     })
 }
-console.log(activities);
+console.log(creditCardLabel);
+console.log(zipCodeLabel);
+console.log(cvvLabel);
