@@ -147,3 +147,16 @@ form.addEventListener('submit', (e) => {
     }
     
 })
+
+// Create Event Listeners For Activity Checkbox Elements For Focus And Blur Events
+let activitiesBox = document.querySelectorAll('#activities-box input');
+
+for (let i = 0; i < activitiesBox.length; i++) {
+    activitiesBox[i].addEventListener('focus', (e) => {
+        e.target.parentElement.className = 'focus';
+    });
+
+    activitiesBox[i].addEventListener('blur', (e) => {
+        e.target.parentElement.classList.remove('focus');
+    })
+}
