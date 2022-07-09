@@ -116,34 +116,20 @@ form.addEventListener('submit', (e) => {
     if (nameField === '' || !emailResult) {
         e.preventDefault();
     }
-    if (nameField === '' || nameField === null) {
-        alert('Please Enter Your Name!');
-    } 
-    if (!emailResult) {
-        alert('Please Enter An Email In A Valid Format!');
-    } 
+    
     for (let i = 0; i < activitiesChecked.length; i++) {
         if (activitiesChecked[i].checked) {
             count += 1;
         }
     }
     if (count === 0) {
-        alert('Please Select At Least One Item From The Activities List');
+        e.preventDefault();
     }
     if (paymentMethod.value === 'credit-card') {
         // Prevents Default Form Action if creditCardResult, zipCodeResult, or cvvResult is False
         if (!creditCardResult || !zipCodeResult || !cvvResult) {
             e.preventDefault();
         }
-        if (!creditCardResult) {
-            alert('Credit Card Number Must Be Between 13 and 16 Digits!');
-        }
-       if (!zipCodeResult) {
-        alert('Please Enter A Five Digit Zip Code!');
-       }
-       if (!cvvResult) {
-        alert('Please Enter A Three Digit CVV Code!');
-       }
     }
     
 })
