@@ -95,7 +95,9 @@ paymentMethod.addEventListener('change', (e) => {
 // Event Listener Should Check To See If Form Is Filled Out Correctly
 let form = document.querySelector('form');
 let nameField = document.getElementById('name').value;
+let nameLabel = document.getElementById('name').parentElement;
 let emailField = document.getElementById('email').value;
+let emailLabel = document.getElementById('email').parentElement;
 let creditCardNumber = document.getElementById('cc-num').value;
 let zipCode = document.getElementById('zip').value;
 let cvv = document.getElementById('cvv').value;
@@ -112,9 +114,20 @@ form.addEventListener('submit', (e) => {
     let creditCardResult = creditCardValidation.test(creditCardNumber);
     let zipCodeResult = zipCodeValidation.test(zipCode);
     let cvvResult = cvvValidation.test(cvv);
+    let nameHint = document.getElementById('name-hint');
+    let emailHint = document.getElementById('email-hint');
+    let activitiesHint = document.getElementById('activities-hint');
     // Prevents Default Form Action If nameField is Blank or emailResult is False
     if (nameField === '' || !emailResult) {
         e.preventDefault();
+        nameLabel.classList.add('not-valid');
+        emailLabel.classList.add('not-valid');
+        nameLabel.classList.remove('valid');
+        emailLabel.classList.remove('valid');
+        nameLabel.lastElementChild.hidden = false;
+        nameHint.style.display = 'block';
+        emailLabel.lastElementChild.hidden = false;
+        emailHint.style.display = 'block';
     }
     
     for (let i = 0; i < activitiesChecked.length; i++) {
@@ -124,6 +137,10 @@ form.addEventListener('submit', (e) => {
     }
     if (count === 0) {
         e.preventDefault();
+        activities.classList.add('not-valid');
+        activities.classList.remove('valid');
+        activities.lastElementChild.hidden = false;
+        activitiesHint.style.display = 'block';
     }
     if (paymentMethod.value === 'credit-card') {
         // Prevents Default Form Action if creditCardResult, zipCodeResult, or cvvResult is False
@@ -146,3 +163,4 @@ for (let i = 0; i < activitiesBox.length; i++) {
         e.target.parentElement.classList.remove('focus');
     })
 }
+console.log(activities);
