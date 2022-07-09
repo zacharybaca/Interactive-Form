@@ -124,14 +124,14 @@ form.addEventListener('submit', (e) => {
     let cvvHint = document.getElementById('cvv-hint');
     let activitiesHint = document.getElementById('activities-hint');
     // Prevents Default Form Action If nameField is Blank or emailResult is False
-    if(nameField === '') {
+    if (nameField === '') {
         e.preventDefault();
         nameLabel.classList.add('not-valid');
         nameLabel.classList.remove('valid');
         nameLabel.lastElementChild.hidden = false;
         nameHint.style.display = 'block';
     }
-    else if (!emailResult) {
+    if (!emailResult) {
         e.preventDefault();
         emailLabel.classList.add('not-valid');
         emailLabel.classList.remove('valid');
