@@ -190,6 +190,3 @@ for (let i = 0; i < activitiesBox.length; i++) {
         e.target.parentElement.classList.remove('focus');
     })
 }
-console.log(creditCardLabel);
-console.log(zipCodeLabel);
-console.log(cvvLabel);
