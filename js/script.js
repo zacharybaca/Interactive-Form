@@ -131,12 +131,24 @@ form.addEventListener('submit', (e) => {
         nameLabel.lastElementChild.hidden = false;
         nameHint.style.display = 'block';
     }
+    else {
+        nameLabel.classList.remove('not-valid');
+        nameLabel.classList.add('valid');
+        nameLabel.lastElementChild.hidden = true;
+        nameHint.style.display = 'none';
+    }
     if (!emailResult) {
         e.preventDefault();
         emailLabel.classList.add('not-valid');
         emailLabel.classList.remove('valid');
         emailLabel.lastElementChild.hidden = false;
         emailHint.style.display = 'block';
+    }
+    else {
+        emailLabel.classList.add('valid');
+        emailLabel.classList.remove('not-valid');
+        emailLabel.lastElementChild.hidden = true;
+        emailHint.style.display = 'none';
     }
     
     for (let i = 0; i < activitiesChecked.length; i++) {
@@ -150,6 +162,11 @@ form.addEventListener('submit', (e) => {
         activities.classList.remove('valid');
         activities.lastElementChild.hidden = false;
         activitiesHint.style.display = 'block';
+    } else {
+        activities.classList.remove('not-valid');
+        activities.classList.add('valid');
+        activities.lastElementChild.hidden = true;
+        activitiesHint.style.display = 'none';
     }
     if (paymentMethod.value === 'credit-card') {
         // Prevents Default Form Action if creditCardResult, zipCodeResult, or cvvResult is False
@@ -160,6 +177,12 @@ form.addEventListener('submit', (e) => {
             creditCardLabel.lastElementChild.hidden = false;
             creditCardHint.style.display = 'block';
         }
+        else {
+            creditCardLabel.classList.remove('not-valid');
+            creditCardLabel.classList.add('valid');
+            creditCardLabel.lastElementChild.hidden = true;
+            creditCardHint.style.display = 'none';
+        }
         if (!zipCodeResult) {
             e.preventDefault();
             zipCodeLabel.classList.add('not-valid');
@@ -167,12 +190,24 @@ form.addEventListener('submit', (e) => {
             zipCodeLabel.lastElementChild.hidden = false;
             zipCodeHint.style.display = 'block';
         }
+        else {
+            zipCodeLabel.classList.remove('not-valid');
+            zipCodeLabel.classList.add('valid');
+            zipCodeLabel.lastElementChild.hidden = true;
+            zipCodeHint.style.display = 'none';
+        }
         if (!cvvResult) {
             e.preventDefault();
             cvvLabel.classList.add('not-valid');
             cvvLabel.classList.remove('valid');
             cvvLabel.lastElementChild.hidden = false;
             cvvHint.style.display = 'block';
+        }
+        else {
+            cvvLabel.classList.remove('not-valid');
+            cvvLabel.classList.add('valid');
+            cvvLabel.lastElementChild.hidden = true;
+            cvvHint.style.display = 'none';
         }
     }
     
