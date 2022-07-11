@@ -94,16 +94,11 @@ paymentMethod.addEventListener('change', (e) => {
 
 // Event Listener Should Check To See If Form Is Filled Out Correctly
 let form = document.querySelector('form');
-let nameField = document.getElementById('name').value;
 let nameLabel = document.getElementById('name').parentElement;
-let emailField = document.getElementById('email').value;
 let emailLabel = document.getElementById('email').parentElement;
-let creditCardNumber = document.getElementById('cc-num').value;
 let creditCardLabel = document.getElementById('cc-num').parentElement;
 let zipCodeLabel = document.getElementById('zip').parentElement;
 let cvvLabel = document.getElementById('cvv').parentElement;
-let zipCode = document.getElementById('zip').value;
-let cvv = document.getElementById('cvv').value;
 let emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 let creditCardValidation = /^[0-9]{13,16}$/;
 let zipCodeValidation = /^[0-9]{5}$/;
@@ -113,6 +108,11 @@ let count = 0;
 
 
 form.addEventListener('submit', (e) => {
+    let cvv = document.getElementById('cvv').value;
+    let zipCode = document.getElementById('zip').value;
+    let creditCardNumber = document.getElementById('cc-num').value;
+    let emailField = document.getElementById('email').value;
+    let nameField = document.getElementById('name').value;
     let emailResult = emailValidation.test(emailField);
     let creditCardResult = creditCardValidation.test(creditCardNumber);
     let zipCodeResult = zipCodeValidation.test(zipCode);
